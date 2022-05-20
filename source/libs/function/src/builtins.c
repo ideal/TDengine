@@ -731,7 +731,8 @@ const SBuiltinFuncDefinition funcMgtBuiltins[] = {
     .initFunc     = functionSetup,
     .processFunc  = countFunction,
     .finalizeFunc = functionFinalize,
-    .invertFunc   = countInvertFunction
+    .invertFunc   = countInvertFunction,
+    .combineFunc = combineFunction,
   },
   {
     .name = "sum",
@@ -743,7 +744,8 @@ const SBuiltinFuncDefinition funcMgtBuiltins[] = {
     .initFunc     = functionSetup,
     .processFunc  = sumFunction,
     .finalizeFunc = functionFinalize,
-    .invertFunc   = sumInvertFunction
+    .invertFunc   = sumInvertFunction,
+    .combineFunc = combineFunction,
   },
   {
     .name = "min",

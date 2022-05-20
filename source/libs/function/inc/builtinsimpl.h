@@ -27,6 +27,7 @@ bool functionSetup(SqlFunctionCtx *pCtx, SResultRowEntryInfo* pResultInfo);
 int32_t functionFinalize(SqlFunctionCtx* pCtx, SSDataBlock* pBlock);
 int32_t dummyProcess(SqlFunctionCtx* UNUSED_PARAM(pCtx));
 int32_t functionFinalizeWithResultBuf(SqlFunctionCtx* pCtx, SSDataBlock* pBlock, char* finalResult);
+int32_t combineFunction(SqlFunctionCtx* pDestCtx, SqlFunctionCtx* pSourceCtx);
 
 EFuncDataRequired countDataRequired(SFunctionNode* pFunc, STimeWindow* pTimeWindow);
 bool getCountFuncEnv(struct SFunctionNode* pFunc, SFuncExecEnv* pEnv);

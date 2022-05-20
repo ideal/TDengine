@@ -388,6 +388,18 @@ int32_t countInvertFunction(SqlFunctionCtx* pCtx) {
   return TSDB_CODE_SUCCESS;
 }
 
+int32_t combineFunction(SqlFunctionCtx* pDestCtx, SqlFunctionCtx* pSourceCtx) {
+  SResultRowEntryInfo* pDResInfo = GET_RES_INFO(pDestCtx);
+  char*                pDBuf = GET_ROWCELL_INTERBUF(pDResInfo);
+
+  SResultRowEntryInfo* pSResInfo = GET_RES_INFO(pSourceCtx);
+  char*                pSBuf = GET_ROWCELL_INTERBUF(pSResInfo);
+  *((int64_t*)pDBuf) += *((int64_t*)pSBuf);
+
+  SET_VAL(pDResInfo, *((int64_t*)pDBuf), 1);
+  return TSDB_CODE_SUCCESS;
+}
+
 #define LIST_ADD_N(_res, _col, _start, _rows, _t, numOfElem)             \
   do {                                                                   \
     _t* d = (_t*)(_col->pData);                                          \
